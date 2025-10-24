@@ -1,0 +1,12 @@
+<div class="d-flex">
+    <span [class.mobile-text]="IsMobileViewport || IsTabletViewport" matSnackBarLabel>
+        <div>Janazah Date: {{data.date}} {{data.time}}</div>
+        <div>Location: {{data.location}}</div>
+        <div>Deceased: {{data.name}}</div>
+    </span>
+    <span matSnackBarActions>
+        <button mat-icon-button matSnackBarAction (click)="snackbarRef.dismiss()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </span>
+</div>

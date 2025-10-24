@@ -1,0 +1,27 @@
+mat-button-toggle {
+    flex: 1 1 0;
+}
+
+mat-icon {
+    color: #f5f5f5;
+}
+
+.logo-avatar-nav {
+    height: 48px;
+    width: 48px;
+    background-image: url('../../public/louliplogo_bgremoved.png');
+    background-size: cover;
+}
+
+.mobile-hamburger-button {
+    height: 48px;
+    background-color: #666666;
+}
+
+.mobile-hamburger-button:focus {
+    height: 48px;
+}
+
+.menu-button-label-text {
+    color: #f5f5f5;
+}
