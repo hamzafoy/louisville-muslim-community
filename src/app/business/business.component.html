@@ -1,1 +1,49 @@
-<p>business works!</p>
+<div class="card-shuffler-container">
+  <div class="card-wrapper"
+       (touchstart)="onTouchStart($event)"
+       (touchmove)="onTouchMove($event)"
+       (touchend)="onTouchEnd($event)">
+
+    <mat-card class="shuffler-card">
+      <mat-card-header>
+        <mat-card-title>{{ currentCard.title }}</mat-card-title>
+        <mat-card-subtitle>{{ currentCard.description }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>{{ currentCard.content }}</p>
+      </mat-card-content>
+
+      <mat-card-actions class="card-actions">
+        <button
+          mat-icon-button
+          (click)="navigatePrevious()"
+          [disabled]="isFirstCard"
+          class="nav-button"
+          aria-label="Previous card">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        <div class="indicators">
+          @for (card of cards; track card.id; let i = $index) {
+            <button
+              class="indicator"
+              [class.active]="i === currentIndex()"
+              (click)="goToCard(i)"
+              [attr.aria-label]="'Go to card ' + (i + 1)">
+            </button>
+          }
+        </div>
+
+        <button
+          mat-icon-button
+          (click)="navigateNext()"
+          [disabled]="isLastCard"
+          class="nav-button"
+          aria-label="Next card">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
