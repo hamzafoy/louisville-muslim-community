@@ -1,8 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 interface CardData {
   id: number;
@@ -18,31 +20,23 @@ interface CardData {
   templateUrl: './schools.component.html',
   styleUrl: './schools.component.css'
 })
-export class SchoolsComponent {
+export class SchoolsComponent implements OnInit {
+
+  constructor(private http: HttpClient) {
+    this.http.get<CardData[]>('/school-cards.json').subscribe(data => {
+      this.cards = data;
+    });
+  }
+
+  ngOnInit(): void {
+    
+  }
+
   currentIndex = signal(0);
   startX = 0;
   isDragging = false;
 
-  cards: CardData[] = [
-    {
-      id: 1,
-      title: 'HIRA Institute',
-      description: '3819 Bardstown Rd, Louisville KY 40218',
-      content: 'Swipe or use the arrow buttons to explore different cards. This interface adapts seamlessly to both desktop and mobile devices.'
-    },
-    {
-      id: 2,
-      title: 'Islamic School of Louisville',
-      description: '8215 Old Westport Rd, Louisville KY 40222',
-      content: 'This component is fully responsive and optimized for touch gestures on mobile devices and click navigation on desktop.'
-    },
-    {
-      id: 3,
-      title: 'Nur Islamic School of Louisville',
-      description: '6500 Six Mile Ln, Louisville KY 40218',
-      content: 'Focus on what matters with a distraction-free interface that emphasizes readability and ease of use.'
-    }
-  ];
+  cards: CardData[] = [];
 
   get currentCard() {
     return this.cards[this.currentIndex()];

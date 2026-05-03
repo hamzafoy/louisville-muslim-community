@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "title": "HIRA Institute",
+        "description": "3819 Bardstown Rd, Louisville KY 40218",
+        "content": "Swipe or use the arrow buttons to explore different cards. This interface adapts seamlessly to both desktop and mobile devices."
+    },
+    {
+        "id": 2,
+        "title": "Islamic School of Louisville",
+        "description": "8215 Old Westport Rd, Louisville KY 40222",
+        "content": "This component is fully responsive and optimized for touch gestures on mobile devices and click navigation on desktop."
+    },
+    {
+        "id": 3,
+        "title": "Nur Islamic School of Louisville",
+        "description": "6500 Six Mile Ln, Louisville KY 40218",
+        "content": "Focus on what matters with a distraction-free interface that emphasizes readability and ease of use."
+    }
+]
