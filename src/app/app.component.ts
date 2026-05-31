@@ -4,12 +4,12 @@ import { MATERIAL_IMPORTS } from './angular-material';
 import { CommonModule } from '@angular/common';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { LayoutService } from './services/layout.service';
-import { BehaviorSubject } from 'rxjs';
+import { TranslatePipe } from './pipes/translate.pipe';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, CommonModule, MATERIAL_IMPORTS],
+  imports: [RouterOutlet, RouterLink, CommonModule, TranslatePipe, MATERIAL_IMPORTS],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   animations: [

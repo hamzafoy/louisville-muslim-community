@@ -1,8 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { LanguageService, Language } from '../services/language.service';
+import { MATERIAL_IMPORTS } from '../angular-material';
 
 interface CardData {
   id: number;
@@ -14,14 +16,19 @@ interface CardData {
 @Component({
   selector: 'app-business',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MATERIAL_IMPORTS],
   templateUrl: './business.component.html',
   styleUrl: './business.component.css'
 })
 export class BusinessComponent {
+  public languageService = inject(LanguageService);
+  selectedLanguage: Language;
   currentIndex = signal(0);
   startX = 0;
   isDragging = false;
+  constructor() {
+      this.selectedLanguage = this.languageService.selectedLanguage;
+  }
 
   cards: CardData[] = [
     {
@@ -99,4 +106,9 @@ export class BusinessComponent {
 
     this.isDragging = false;
   }
+
+  onLanguageChange(language: string) {
+    this.selectedLanguage = language as Language;
+  }
+  
 }

@@ -1,10 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { LanguageService, Language } from '../services/language.service';
+import { MATERIAL_IMPORTS } from '../angular-material';
 
 interface CardData {
   id: number;
@@ -16,15 +17,19 @@ interface CardData {
 @Component({
   selector: 'app-masaajid',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, MATERIAL_IMPORTS],
   templateUrl: './masaajid.component.html',
   styleUrl: './masaajid.component.css'
 })
+
 export class MasaajidComponent {
+  public languageService = inject(LanguageService);
+  selectedLanguage: Language;
   constructor(private http: HttpClient) {
     this.http.get<CardData[]>('/masaajid-cards.json').subscribe(data => {
       this.cards = data;
     });
+    this.selectedLanguage = this.languageService.selectedLanguage;
   }
   
   currentIndex = signal(0);
@@ -90,4 +95,9 @@ export class MasaajidComponent {
 
     this.isDragging = false;
   }
+
+  onLanguageChange(language: string) {
+    this.selectedLanguage = language as Language;
+  }
+
 }

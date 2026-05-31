@@ -19,4 +19,9 @@
             </mat-card-content>
         </mat-card>
     </div>
+    <mat-button-toggle-group class="i18n-translator" [value]="selectedLanguage" (change)="onLanguageChange($event.value)">
+        <mat-button-toggle value="en" (click)="languageService.setLanguage('en')">English</mat-button-toggle>
+        <mat-button-toggle value="ar" (click)="languageService.setLanguage('ar')">العربية</mat-button-toggle>
+        <mat-button-toggle value="so" (click)="languageService.setLanguage('so')">Af Soomaali</mat-button-toggle>
+    </mat-button-toggle-group>
 </div>

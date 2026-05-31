@@ -3,25 +3,25 @@
   <div [ngClass]="isMobileMenuOpen ? 'd-flex' : 'd-none'" [@expand]="isMobileMenuOpen ? 'true' : 'false'">
     <mat-button-toggle-group value="home" class="w-100 rounded-0" vertical>
       <mat-button-toggle value="home" routerLink="/home">
-        Home
+        {{ 'home' | translate }}
       </mat-button-toggle>
       <mat-button-toggle routerLink="/news">
-        News
+        {{ 'news' | translate }}
       </mat-button-toggle>
       <mat-button-toggle routerLink="/map">
-        Map
+        {{ 'map' | translate }}
       </mat-button-toggle>
       <mat-button-toggle routerLink="/masaajid">
-        Masaajid
+        {{ 'masaajid' | translate }}
       </mat-button-toggle>
       <mat-button-toggle routerLink="/business">
-        Businesses
+        {{ 'businesses' | translate }}
       </mat-button-toggle>
       <mat-button-toggle routerLink="/schools">
-        Schools
+        {{ 'schools' | translate }}
       </mat-button-toggle>
       <mat-button-toggle routerLink="/islam">
-        Islam
+        {{ 'islam' | translate }}
       </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
@@ -38,25 +38,25 @@
 <main class="main mb-4" *ngIf="IsLaptopViewport || IsLargeViewport || IsXLargeViewport">
   <mat-button-toggle-group value="home" class="w-100 rounded-0">
     <mat-button-toggle value="home" routerLink="/home">
-      Home
+      {{ 'home' | translate }}
     </mat-button-toggle>
     <mat-button-toggle routerLink="/news">
-      News
+      {{ 'news' | translate }}
     </mat-button-toggle>
     <mat-button-toggle routerLink="/map">
-      Map
+      {{ 'map' | translate }}
     </mat-button-toggle>
     <mat-button-toggle routerLink="/masaajid">
-      Masaajid
+      {{ 'masaajid' | translate }}
     </mat-button-toggle>
     <mat-button-toggle routerLink="/business">
-      Businesses
+      {{ 'businesses' | translate }}
     </mat-button-toggle>
     <mat-button-toggle routerLink="/schools">
-      Schools
+      {{ 'schools' | translate }}
     </mat-button-toggle>
     <mat-button-toggle routerLink="/islam">
-      Islam
+      {{ 'islam' | translate }}
     </mat-button-toggle>
   </mat-button-toggle-group>
 </main>

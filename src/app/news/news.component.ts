@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MATERIAL_IMPORTS } from '../angular-material';
 import { SafeUrlPipe } from '../pipes/safe-url.pipe';
+import { LanguageService, Language } from '../services/language.service';
 
 @Component({
   selector: 'app-news',
@@ -12,8 +13,12 @@ import { SafeUrlPipe } from '../pipes/safe-url.pipe';
 })
 
 export class NewsComponent {
+  public languageService = inject(LanguageService);
+  selectedLanguage: Language;
 
-  constructor() { }
+  constructor() { 
+    this.selectedLanguage = this.languageService.selectedLanguage;
+  }
   mainCalendar: string = 'mensuhbaoflou%40gmail.com';
   bilalWestCalendar: string = '0dd9c26ffc5f433ee0c668439e81fe4446605a18b4d57c59912588c25842a899%40group.calendar.google.com';
   bilalSouthCalendar: string = '6636f783f8b3f21a440239183eda0652e4b4e3d1f1281215421a955a1aebccdc@group.calendar.google.com';
@@ -28,5 +33,9 @@ export class NewsComponent {
   abuBakrCalendar: string = '0e345af24f0b91656c99cba91d753de18321c8698ce4a94ca149db3b22d3db45@group.calendar.google.com';
   oneTimeEvents: string = 'f73f229d96920cd7dca4da4555c05461a501a4a61df25770bd2162b15ed34ee9@group.calendar.google.com';
   gCalendarUrl: string = `https://calendar.google.com/calendar/embed?src=${this.mainCalendar}&src=${this.oneTimeEvents}&src=${this.abuBakrCalendar}&src=${this.scclIncCalendar}&src=${this.bilalWestCalendar}&src=${this.bilalSouthCalendar}&src=${this.alNurCalendar}&src=${this.riverRoadCalendar}&src=${this.iclCalendar}&src=${this.glicCalendar}&src=${this.hiraCalendar}&src=${this.mccCalendar}&src=${this.miscCalendar}&ctz=America%2FNew_York`;
+
+  onLanguageChange(language: string) {
+    this.selectedLanguage = language as Language;
+  }
 
 }

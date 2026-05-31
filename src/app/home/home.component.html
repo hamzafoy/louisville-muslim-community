@@ -3,11 +3,15 @@
         <mat-card-header class="my-4">
             <div mat-card-avatar class="logo-avatar"></div>
             <mat-card-title>Louisville Lip</mat-card-title>
-            <mat-card-subtitle>Louisville Muslim Community News &amp; Resources</mat-card-subtitle>
+            <mat-card-subtitle>{{ 'homeSubtitle' | translate }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <p>Welcome to the Louisville Lip Website!</p>
-            <p>Learn more about the maintainer of the Louisville Lip Newsletter here: <a routerLink="/about">Hamza Foy</a></p>
+            <span>{{ 'homeLearnMore' | translate }} </span> <a routerLink="/about">{{ 'homeName' | translate }}</a>
         </mat-card-content>
     </mat-card>
+    <mat-button-toggle-group class="i18n-translator" [value]="selectedLanguage" (change)="onLanguageChange($event.value)">
+        <mat-button-toggle value="en" (click)="languageService.setLanguage('en')">English</mat-button-toggle>
+        <mat-button-toggle value="ar" (click)="languageService.setLanguage('ar')">العربية</mat-button-toggle>
+        <mat-button-toggle value="so" (click)="languageService.setLanguage('so')">Af Soomaali</mat-button-toggle>
+    </mat-button-toggle-group>
 </div>
