@@ -1,26 +1,26 @@
 <!-- Mobile Menu -->
 <main *ngIf="IsMobileViewport || IsTabletViewport" class="main mb-4">
   <div [ngClass]="isMobileMenuOpen ? 'd-flex' : 'd-none'" [@expand]="isMobileMenuOpen ? 'true' : 'false'">
-    <mat-button-toggle-group value="home" class="w-100 rounded-0" vertical>
+    <mat-button-toggle-group [value]="selectedNavItem" class="w-100 rounded-0" vertical>
       <mat-button-toggle value="home" routerLink="/home">
         {{ 'home' | translate }}
       </mat-button-toggle>
-      <mat-button-toggle routerLink="/news">
+      <mat-button-toggle value="news" routerLink="/news">
         {{ 'news' | translate }}
       </mat-button-toggle>
-      <mat-button-toggle routerLink="/map">
+      <mat-button-toggle value="map" routerLink="/map">
         {{ 'map' | translate }}
       </mat-button-toggle>
-      <mat-button-toggle routerLink="/masaajid">
+      <mat-button-toggle value="masaajid" routerLink="/masaajid">
         {{ 'masaajid' | translate }}
       </mat-button-toggle>
-      <mat-button-toggle routerLink="/business">
+      <mat-button-toggle value="business" routerLink="/business">
         {{ 'businesses' | translate }}
       </mat-button-toggle>
-      <mat-button-toggle routerLink="/schools">
+      <mat-button-toggle value="schools" routerLink="/schools">
         {{ 'schools' | translate }}
       </mat-button-toggle>
-      <mat-button-toggle routerLink="/islam">
+      <mat-button-toggle value="islam" routerLink="/islam">
         {{ 'islam' | translate }}
       </mat-button-toggle>
     </mat-button-toggle-group>
@@ -36,26 +36,26 @@
 
 <!-- Desktop Menu -->
 <main class="main mb-4" *ngIf="IsLaptopViewport || IsLargeViewport || IsXLargeViewport">
-  <mat-button-toggle-group value="home" class="w-100 rounded-0">
+  <mat-button-toggle-group [value]="selectedNavItem" class="w-100 rounded-0">
     <mat-button-toggle value="home" routerLink="/home">
       {{ 'home' | translate }}
     </mat-button-toggle>
-    <mat-button-toggle routerLink="/news">
+    <mat-button-toggle value="news" routerLink="/news">
       {{ 'news' | translate }}
     </mat-button-toggle>
-    <mat-button-toggle routerLink="/map">
+    <mat-button-toggle value="map" routerLink="/map">
       {{ 'map' | translate }}
     </mat-button-toggle>
-    <mat-button-toggle routerLink="/masaajid">
+    <mat-button-toggle value="masaajid" routerLink="/masaajid">
       {{ 'masaajid' | translate }}
     </mat-button-toggle>
-    <mat-button-toggle routerLink="/business">
+    <mat-button-toggle value="business" routerLink="/business">
       {{ 'businesses' | translate }}
     </mat-button-toggle>
-    <mat-button-toggle routerLink="/schools">
+    <mat-button-toggle value="schools" routerLink="/schools">
       {{ 'schools' | translate }}
     </mat-button-toggle>
-    <mat-button-toggle routerLink="/islam">
+    <mat-button-toggle value="islam" routerLink="/islam">
       {{ 'islam' | translate }}
     </mat-button-toggle>
   </mat-button-toggle-group>
