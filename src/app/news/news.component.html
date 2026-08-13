@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="calendar-container mb-4">
+    <div class="calendar-container">
         <iframe 
         [src]="gCalendarUrl | safeUrl"
         width="100%" 
@@ -8,7 +8,7 @@
         scrolling="yes">
         </iframe>
     </div>
-    <div class="news-container">
+    <!-- <div class="news-container">
         <mat-card class="rounded-0" appearance="outlined">
             <mat-card-header class="my-4">
                 <mat-card-title>Title</mat-card-title>
@@ -18,10 +18,29 @@
                 <p>Blurb about Event</p>
             </mat-card-content>
         </mat-card>
-    </div>
-    <mat-button-toggle-group class="i18n-translator" [value]="selectedLanguage" (change)="onLanguageChange($event.value)">
+    </div> -->
+    <mat-button-toggle-group class="i18n-translator mb-3" [value]="selectedLanguage" (change)="onLanguageChange($event.value)">
         <mat-button-toggle value="en" (click)="languageService.setLanguage('en')">English</mat-button-toggle>
         <mat-button-toggle value="ar" (click)="languageService.setLanguage('ar')">العربية</mat-button-toggle>
         <mat-button-toggle value="so" (click)="languageService.setLanguage('so')">Af Soomaali</mat-button-toggle>
     </mat-button-toggle-group>
+    <!-- Ticker tape for desktop (bottom) -->
+  <div class="ticker-tape desktop">
+    <div class="ticker-content islamic-ticker">
+      <ng-container *ngFor="let item of tickerItems">
+        <span class="ticker-item">{{ item }}</span>
+        <span *ngIf="tickerItems.indexOf(item) < tickerItems.length - 1" class="ticker-separator">•</span>
+      </ng-container>
+    </div>
+  </div>
+  
+  <!-- Ticker tape for mobile (top) -->
+  <div class="ticker-tape mobile">
+    <div class="ticker-content-mobile islamic-ticker">
+      <ng-container *ngFor="let item of tickerItems">
+        <span class="ticker-item">{{ item }}</span>
+        <span *ngIf="tickerItems.indexOf(item) < tickerItems.length - 1" class="ticker-separator">•</span>
+      </ng-container>
+    </div>
+  </div>
 </div>

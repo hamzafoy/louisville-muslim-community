@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { MATERIAL_IMPORTS } from '../angular-material';
 import { SafeUrlPipe } from '../pipes/safe-url.pipe';
 import { LanguageService, Language } from '../services/language.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-news',
@@ -12,9 +13,16 @@ import { LanguageService, Language } from '../services/language.service';
   styleUrl: './news.component.css'
 })
 
-export class NewsComponent {
+export class NewsComponent implements OnInit, OnDestroy {
   public languageService = inject(LanguageService);
   selectedLanguage: Language;
+  private destroy$ = new Subject<void>();
+  tickerItems: string[] = [];
+  defaultTickerItems: string[] = [
+    'The Louisville Muhsineen is proud to serve our local community.',
+    'Follow us on Instagram, Facebook, & on YouTube',
+    'May Allah bless you and your family with health, happiness, and prosperity.'
+  ];
 
   constructor() { 
     this.selectedLanguage = this.languageService.selectedLanguage;
@@ -34,8 +42,21 @@ export class NewsComponent {
   oneTimeEvents: string = 'f73f229d96920cd7dca4da4555c05461a501a4a61df25770bd2162b15ed34ee9@group.calendar.google.com';
   gCalendarUrl: string = `https://calendar.google.com/calendar/embed?src=${this.mainCalendar}&src=${this.oneTimeEvents}&src=${this.abuBakrCalendar}&src=${this.scclIncCalendar}&src=${this.bilalWestCalendar}&src=${this.bilalSouthCalendar}&src=${this.alNurCalendar}&src=${this.riverRoadCalendar}&src=${this.iclCalendar}&src=${this.glicCalendar}&src=${this.hiraCalendar}&src=${this.mccCalendar}&src=${this.miscCalendar}&ctz=America%2FNew_York`;
 
+  ngOnInit(): void {
+    this.getTickerTape();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   onLanguageChange(language: string) {
     this.selectedLanguage = language as Language;
+  }
+
+  private getTickerTape(): void {
+    this.tickerItems = this.defaultTickerItems;
   }
 
 }
